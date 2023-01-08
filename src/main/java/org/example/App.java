@@ -20,7 +20,7 @@ public class App
         Session session = sessionFactory.getCurrentSession();
 
         try {
-            int id = 2;
+            int id = 1;
             session.beginTransaction();
             Person person = session.get(Person.class, id);
             if (person != null) {
