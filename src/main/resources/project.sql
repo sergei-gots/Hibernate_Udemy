@@ -32,3 +32,5 @@ CREATE TABLE Person (
 );
 
 SELECT * FROM Person;
+
+SELECT * FROM Person WHERE NAME LIKE '%2';

@@ -7,9 +7,9 @@ import javax.persistence.*;
 public class Person {
     @Id
     @Column(name = "id")
-    //strategy = GenerationType.IDENTITY means
-    // that generation of the key for id will be
-    // completely performed on the Postgres-side.
+    /*  strategy = GenerationType.IDENTITY means
+        that generation of the key for id will be
+        completely performed on the Postgres-side.     */
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     /* Example code for strategy = GenerationType.SEQUENCE:
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
@@ -64,5 +64,14 @@ public class Person {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                '}';
     }
 }
