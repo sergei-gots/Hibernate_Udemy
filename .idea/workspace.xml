@@ -7,8 +7,6 @@
     <list default="true" id="6655e0ab-7605-480b-a6ed-99dc72ec47d8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/model/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/model/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/project.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/project.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,6 +112,7 @@
       <workItem from="1673142658822" duration="5877000" />
       <workItem from="1673230202156" duration="585000" />
       <workItem from="1673231598675" duration="6726000" />
+      <workItem from="1673684525017" duration="1693000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1673142793334</created>

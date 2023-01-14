@@ -34,7 +34,9 @@ public class App
             session.beginTransaction();
 
             Person person = session.get(Person.class, id);
-            session.delete(person);
+            if(person != null) {
+                session.delete(person);
+            }
             //Call of 'delete' causes the next output (if person !=null):
             //  Hibernate: delete from Person where id=?
 
@@ -53,16 +55,23 @@ public class App
             session.beginTransaction();
 
             Person person = session.get(Person.class, id);
-            //Call of 'get' causes the next output:
-            //  Hibernate: select person0_.id as id1_0_0_, person0_.age as age2_0_0_, person0_.name as name3_0_0_
-            //      from Person person0_ where person0_.id=?
+                //Call of 'get' causes the next output:
+                //  Hibernate: select person0_.id as id1_0_0_, person0_.age as age2_0_0_, person0_.name as name3_0_0_
+                //      from Person person0_ where person0_.id=?
 
-            person.setName("New name2");  //and THAT's ALL:)
-            System.out.println("New name is set.");
+            if(person !=null) {
 
+                System.out.println("person.getName() = " + person.getName());
+
+                person.setName("New name2");  //and THAT's ALL:)
+
+                 System.out.println("New name for a person with id=" + id + " is set.");
+
+            }
             session.getTransaction().commit();
-            //Call of 'commit' causes the next output (if name was ACTUALLY changed):
-            //  Hibernate: update Person set age=?, name=? where id=?
+                //Call of 'commit' causes the next output (if name was ACTUALLY changed):
+                //  Hibernate: update Person set age=?, name=? where id=?
+
             System.out.println("Transaction is committed.");
         }
         finally {
@@ -110,9 +119,9 @@ public class App
         try {
             session.beginTransaction();
 
-            // Hibernate log will be:
-            //  select person0_.id as id1_0_0_, person0_.age as age2_0_0_, person0_.name as name3_0_0_
-            //  from Person person0_ where person0_.id=?
+                // Hibernate log will be:
+                //  select person0_.id as id1_0_0_, person0_.age as age2_0_0_, person0_.name as name3_0_0_
+                //  from Person person0_ where person0_.id=?
 
             Person person = session.get(Person.class, id);
             if (person != null) {
