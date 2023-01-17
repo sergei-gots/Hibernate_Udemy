@@ -18,7 +18,6 @@ CREATE SEQUENCE person_id_seq;
 
 
 
-INSERT INTO Person(id, name, age) VALUES(1, 'Test Person', 20);
 
 SELECT * FROM Person;
 
@@ -30,6 +29,12 @@ CREATE TABLE Person (
     name varchar(100),
     age int
 );
+
+INSERT INTO Person(name, age) VALUES('Test Person 1', 20);
+INSERT INTO Person(name, age) VALUES('Test Person 2', 30);
+INSERT INTO Person(name, age) VALUES('Test Person 3', 40);
+INSERT INTO Person(name, age) VALUES('Test Person 4', 50);
+
 
 SELECT * FROM Person;
 

@@ -1,31 +1,23 @@
 package org.example.model;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "Person")
 public class Person {
     @Id
     @Column(name = "id")
-    /*  strategy = GenerationType.IDENTITY means
-        that generation of the key for id will be
-        completely performed on the Postgres-side.     */
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    /* Example code for strategy = GenerationType.SEQUENCE:
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,
-        generator = "seq_generator_person")
-    @SequenceGenerator(name = "seq_generator_person",
-        sequenceName = "person_id_seq",
-        allocationSize = 1)
-     */
     private int id;
-
     @Column(name = "name")
     private  String name;
-
     @Column(name = "age")
     private int age;
-
     public Person() {}
 
     //Constructor for the Lesson#48, where we pass id directly from this application

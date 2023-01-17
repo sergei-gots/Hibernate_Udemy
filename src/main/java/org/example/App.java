@@ -5,24 +5,48 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-/**
- * Hello world!
- *
- */
-public class App 
+import java.util.List;
+
+public class App
 {
     public static void main( String[] args )
     {
-
-        System.out.println( "Hello World!" );
         Configuration configuration = new Configuration().addAnnotatedClass(Person.class);
         SessionFactory sessionFactory = configuration.buildSessionFactory();
         Session session = sessionFactory.getCurrentSession();
 
-            L_48_getPerson(sessionFactory);
-            L_49_savePersons(sessionFactory);
-            L_50_updatePerson(sessionFactory);
-            L_50_deletePerson(sessionFactory);
+        try {
+            session.beginTransaction();
+
+            Person person = session.get(Person.class, 1);
+            System.out.println(person);
+            session.getTransaction().commit();
+        }
+        finally {
+            session.close();
+        }
+    }
+
+    private static void L_51_HQL(SessionFactory sessionFactory) {
+
+        Session session = sessionFactory.getCurrentSession();
+
+        try {
+            session.beginTransaction();
+
+            session.createQuery("DELETE Person WHERE age < 30 ").executeUpdate();
+
+            List <Person> people = session.createQuery("FROM Person WHERE name = 'Under 30'").getResultList();
+
+            for(Person person : people) {
+                System.out.println(person);
+            }
+
+            session.getTransaction().commit();
+        }
+        finally { 
+            session.close();
+        }
     }
 
     private static void L_50_deletePerson(SessionFactory sessionFactory) {
@@ -35,10 +59,10 @@ public class App
 
             Person person = session.get(Person.class, id);
             if(person != null) {
+                //Call of 'delete' causes the next output (if person !=null):
+                //  Hibernate: delete from Person where id=?
                 session.delete(person);
             }
-            //Call of 'delete' causes the next output (if person !=null):
-            //  Hibernate: delete from Person where id=?
 
             session.getTransaction().commit();
         } finally {
@@ -86,9 +110,10 @@ public class App
         try {
             session.beginTransaction();
 
-            Person person1 = new Person("Test1", 30);
-            Person person2 = new Person("Test2", 40);
-            Person person3 = new Person("Test3", 50);
+            Person person1 = new Person("Test0", 20);
+            Person person2 = new Person("Test1", 30);
+            Person person3 = new Person("Test2", 40);
+            Person person4 = new Person("Test3", 50);
 
             //In this output the id will be presumably = 0:
             System.out.println("Person1 before 'session.save(person1): " + person1);
@@ -96,7 +121,9 @@ public class App
             session.save(person1);
             session.save(person2);
             session.save(person3);
+            session.save(person4);
             // Hibernate log will be:
+            //  Hibernate: insert into Person (age, name) values (?, ?)
             //  Hibernate: insert into Person (age, name) values (?, ?)
             //  Hibernate: insert into Person (age, name) values (?, ?)
             //  Hibernate: insert into Person (age, name) values (?, ?)
