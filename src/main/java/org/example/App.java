@@ -23,20 +23,69 @@ public class App
         try {
             session.beginTransaction();
 
-            Person person = new Person("Sergei", 46);
-            Item item = new Item ("Item from Hibernate -2", person);
+            Person person = session.get(Person.class, 4);
 
-            person.setItems(new ArrayList<Item>(Collections.singletonList(item)));
+            Item item = session.get(Item.class, 1);
 
-            session.save(person);
-            session.save(item);
+            //For cash:
+            item.getOwner().getItems().remove(item);
+
+
+            //SQL:
+            item.setOwner(person);
+
+            //For cash:
+            person.getItems().add(item);
 
             session.getTransaction().commit();
+
         }
         finally {
             session.close();
         }
     }
+
+    public static void L_52_deletePerson(Session session) {
+        try {
+            session.beginTransaction();
+
+            Person person = session.get(Person.class, 2);
+            session.remove(person);
+
+            //In order to provide an appropriate state of application cash:
+            person.getItems().forEach(i -> i.setOwner(null));
+
+            session.getTransaction().commit();
+
+        }
+        finally {
+            session.close();
+        }
+    }
+
+    public static void L_52_deletePersonsItems(Session session) {
+        try {
+            session.beginTransaction();
+
+
+            Person person = session.get(Person.class, 3);
+            List<Item> items = person.getItems();
+
+            //Next causes SQL:
+            for (Item item : items) {
+                session.remove(item);
+            }
+
+            //This code is for cached values in application memory:
+            person.getItems().clear();
+
+            session.getTransaction().commit();
+
+        } finally {
+            session.close();
+        }
+    }
+
 
     public static void L_52_createPersonAndItem(Session session)  {
         try {
@@ -57,6 +106,7 @@ public class App
         }
 
     }
+
     public static void L_52_addItem(Session session) {
 
         try {

@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6655e0ab-7605-480b-a6ed-99dc72ec47d8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -124,7 +125,7 @@
       <workItem from="1673869737879" duration="3052000" />
       <workItem from="1673981827311" duration="1109000" />
       <workItem from="1674069083586" duration="3387000" />
-      <workItem from="1674236020853" duration="1646000" />
+      <workItem from="1674236020853" duration="6734000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1673142793334</created>
@@ -168,7 +169,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673686570221</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="L.52 &quot;CREATE Person and Item&quot; added">
+      <created>1674237712556</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1674237712556</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -190,6 +198,7 @@
     <MESSAGE value="L.48 &quot;The First HIBERNATE App&quot; is completed" />
     <MESSAGE value="L.49 &quot;session.save()&quot; added" />
     <MESSAGE value="L.50 &quot;UPDATE and session.delete()&quot; added" />
-    <option name="LAST_COMMIT_MESSAGE" value="L.50 &quot;UPDATE and session.delete()&quot; added" />
+    <MESSAGE value="L.52 &quot;CREATE Person and Item&quot; added" />
+    <option name="LAST_COMMIT_MESSAGE" value="L.52 &quot;CREATE Person and Item&quot; added" />
   </component>
 </project>
